@@ -110,13 +110,13 @@ public class TheFirstProjectFrame extends javax.swing.JFrame {
                 }
             }
         }
-        int n = s.size();//testing
+        int n = s.size();
         //implement PEMDAS
-        for(int i = 0;i<n-1;i++){
+        for(int i = 0;i<n-1;i++){//make sure the string is actually an alternating sequence of numbers and operations
             String first = s.get(i);
             String second = s.get(i+1);
-            boolean firstop = (first.equals("+")||first.equals("-")||first.equals("/")||first.equals("x"));
-            boolean secondop = (second.equals("+")||second.equals("-")||second.equals("/")||second.equals("x"));
+            boolean firstop = (first.equals("+")||first.equals("-")||first.equals("/")||first.equals("*"));
+            boolean secondop = (second.equals("+")||second.equals("-")||second.equals("/")||second.equals("*"));
             if((firstop&&secondop) || ((!firstop)&& (!secondop))){
                 System.out.println(first + " " + second + " " + i);
                 System.out.println(firstop + " " + secondop);
@@ -124,21 +124,21 @@ public class TheFirstProjectFrame extends javax.swing.JFrame {
                 return error;
             }
         }
-        if(s.get(0).equals("-")){
+        if(s.get(0).equals("-")){//change an initial minus sign to a negative sign for the first number
             s.add(0, "0");
         }
-        if(s.get(0).equals("+")||s.get(0).equals("/")||s.get(0).equals("*")){
+        if(s.get(0).equals("+")||s.get(0).equals("/")||s.get(0).equals("*")){//if there is an initial non-minus sign, give an error
             System.out.println(3);
             return error;
         }
         n=s.size();
-        if(s.get(n-1).equals("+")||s.get(n-1).equals("/")||s.get(n-1).equals("*")||s.get(n-1).equals("-")){
+        if(s.get(n-1).equals("+")||s.get(n-1).equals("/")||s.get(n-1).equals("*")||s.get(n-1).equals("-")){//if there are trailing operations, give an error
             System.out.println(12);
             return error;
         }
         int k = (n+1)/2;
         int j = 0;
-        for(int i = 0;i<k-1;i++){
+        for(int i = 0;i<k-1;i++){//parse multiplication and division for pemdas
             System.out.println(s);
             if(s.get(i*2+1).equals("*")){
                 double first = Double.parseDouble(s.get(i*2));
@@ -159,7 +159,7 @@ public class TheFirstProjectFrame extends javax.swing.JFrame {
                 j++;
             }
         }
-        for(int i = j;i<k-1;i++){
+        for(int i = j;i<k-1;i++){//parse addition and subtraction
             System.out.println(s);
             if(s.get(i*2+1).equals("+")){
                 double first = Double.parseDouble(s.get(i*2));
@@ -304,7 +304,7 @@ public class TheFirstProjectFrame extends javax.swing.JFrame {
             }
         });
 
-        timesButton.setText("x");
+        timesButton.setText("*");
         timesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 timesButtonActionPerformed(evt);
@@ -473,7 +473,7 @@ public class TheFirstProjectFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_fourButtonActionPerformed
 
     private void timesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timesButtonActionPerformed
-        input = input + "x";
+        input = input + "*";
         jLabel1.setText(input);
     }//GEN-LAST:event_timesButtonActionPerformed
 
