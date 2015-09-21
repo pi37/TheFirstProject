@@ -103,14 +103,15 @@ public class TheFirstProjectFrame extends javax.swing.JFrame {
                     for(int i = a+1;i<b;i++){
                         wombo.add(s.get(i));
                     }
-                    String middle = evaluate(wombo);
+                    String middle = evaluate(wombo);//we evaluate recursively what is inside one set of parentheses, and turn it into a number for the main string
                     s.subList(a,b+1).clear();
                     s.add(a,middle);
                     return evaluate(s);
                 }
             }
         }
-        int n = s.size();
+        int n = s.size();//testing
+        //implement PEMDAS
         for(int i = 0;i<n-1;i++){
             String first = s.get(i);
             String second = s.get(i+1);
@@ -139,7 +140,7 @@ public class TheFirstProjectFrame extends javax.swing.JFrame {
         int j = 0;
         for(int i = 0;i<k-1;i++){
             System.out.println(s);
-            if(s.get(i*2+1).equals("x")){
+            if(s.get(i*2+1).equals("*")){
                 double first = Double.parseDouble(s.get(i*2));
                 double second = Double.parseDouble(s.get(i*2+2));
                 String combo = String.valueOf(first*second);
